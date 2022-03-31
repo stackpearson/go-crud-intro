@@ -8,6 +8,19 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//need to define out data types. We want to work with movies. They'll need an id, Isbn, title & a director. Let's make the director a separate struct and point to it from movies.
+type Movie struct {
+	ID       string    `json: "id"`
+	Isbn     string    `json: "isbn"`
+	Title    string    `json: "title"`
+	Director *Director `json: "director"`
+}
+
+type Director struct {
+	Firstname string `json: "first name"`
+	Lastname  string `json: "lastname"`
+}
+
 func main() {
 	r := mux.NewRouter()
 
